@@ -9,10 +9,21 @@ const path = require("path");
 const http = require("http");
 const server = http.createServer(app);
 
+// Middleware
+app.use(express.static("public"));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+const submitSurveyForm = require("./API/submit");
+app.use("/submit", submitSurveyForm);
+
+// Database
 mongoose
   .connect(
     "mongodb+srv://arzel_serdena:re4EikDCsC99Qx@expressnodedb.5mszpjq.mongodb.net/",
@@ -23,20 +34,7 @@ mongoose
     process.exit(1);
   });
 
-app.use(express.static("public"));
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-const submitSurveyForm = require("./API/submit");
-app.use("/submit", submitSurveyForm);
-
-// const PORT = 5000;
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
-
+// Server
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
