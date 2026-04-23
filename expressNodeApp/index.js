@@ -8,9 +8,13 @@ const app = express();
 app.use(
   cors({
     origin: "https://ashy-bush-02f47e800.7.azurestaticapps.net",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+    credentials: false,
   }),
 );
+
+app.options("*", cors());
 
 app.use(express.static("public"));
 app.use(express.json());
