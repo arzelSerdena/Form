@@ -160,10 +160,6 @@ export default function SurveyForm() {
           ))}
         </div>
 
-        {/* <div className="progress-track">
-          <div className="progress-bar" style={{ width: `${progressPct}%` }} />
-        </div> */}
-
         {step === 0 && (
           <>
             <div className="field">
