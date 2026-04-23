@@ -84,35 +84,9 @@ export default function SurveyForm() {
   const next = () => {
     if (validateStep()) setStep((s) => s + 1);
   };
-
   const back = () => setStep((s) => s - 1);
-
-  const handleSubmit = async () => {
-    if (!validateStep()) return;
-
-    try {
-      const response = await fetch(
-        "https://serdenaapi.azurewebsites.net/submit",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        },
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log("API Response:", result);
-        setSubmitted(true);
-      } else {
-        const error = await response.json();
-        console.error("API Error:", error.message);
-        alert(error.message || "Failed to submit form. Please try again.");
-      }
-    } catch (error) {
-      console.error("Network error:", error);
-      alert("An error occurred while submitting the form.");
-    }
+  const handleSubmit = () => {
+    if (validateStep()) setSubmitted(true);
   };
 
   const reset = () => {
@@ -120,6 +94,8 @@ export default function SurveyForm() {
     setStep(0);
     setForm(EMPTY_FORM);
   };
+
+  const progressPct = ((step + 1) / STEPS.length) * 100;
 
   if (submitted) {
     return (

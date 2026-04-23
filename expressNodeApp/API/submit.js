@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const FormModel = require("../Models/surveyForm");
+const FormModel = require("../models/surveyForm");
 
 router.post("/", async (req, res) => {
   const { name, email, age, role, recommend, feature, improvements, comments } =

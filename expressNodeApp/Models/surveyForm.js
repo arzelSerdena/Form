@@ -12,7 +12,6 @@ const formSchema = new mongoose.Schema(
       required: [true, "Email is required"],
       trim: true,
       lowercase: true,
-      match: [/\S+@\S+\.\S+/, "Invalid email address"],
     },
     age: {
       type: Number,
