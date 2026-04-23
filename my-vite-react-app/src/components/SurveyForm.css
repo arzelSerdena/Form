@@ -170,22 +170,6 @@ body {
   background: #2dd4bf;
 }
 
-/* .progress-track {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 99px;
-  margin-bottom: 1.75rem;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, #1a4ed7, #2dd4bf);
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-} */
-
 /* ── FIELDS ── */
 
 .field {
