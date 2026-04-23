@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const path = require("path");
+const http = require("http");
+const server = http.createServer(app);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
@@ -29,8 +31,14 @@ app.use(express.urlencoded({ extended: true }));
 const submitSurveyForm = require("./API/submit");
 app.use("/submit", submitSurveyForm);
 
-const PORT = 5000;
+// const PORT = 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+  console.log("Server running on port ${PORT");
 });
