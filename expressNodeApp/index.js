@@ -1,31 +1,28 @@
-const dns = require("node:dns");
-dns.setServers(["1.1.1.1", "8.8.8.8"]);
-
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const app = express();
 const path = require("path");
-const http = require("http");
-const server = http.createServer(app);
+const app = express();
 
-require("dotenv").config();
+app.use(
+  cors({
+    origin: "https://ashy-bush-02f47e800.7.azurestaticapps.net",
+    methods: ["GET", "POST"],
+  }),
+);
 
-// Middleware
 app.use(express.static("public"));
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-const submitSurveyForm = require("./API/submit");
-app.use("/submit", submitSurveyForm);
+const submitRoute = require("./API/submit.js");
+app.use("/submit", submitRoute);
 
-// Database
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
@@ -34,9 +31,8 @@ mongoose
     process.exit(1);
   });
 
-// Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
