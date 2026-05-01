@@ -1,10 +1,10 @@
 import React from "react";
-import SurveyForm from "./components/SurveyForm";
+import JobTracker from "./components/JobTracker";
 
 function App() {
   return (
     <div>
-      <SurveyForm />
+      <JobTracker />
     </div>
   );
 }
