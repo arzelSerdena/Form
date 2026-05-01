@@ -98,7 +98,7 @@ export default function JobTracker() {
 
   const fetchJobs = async () => {
     try {
-      const res = await fetch(`${API}/jobs`);
+      const res = await fetch(`${API}/submit`);
       const data = await res.json();
       setJobs(data);
     } catch (err) {
@@ -157,7 +157,7 @@ export default function JobTracker() {
         dateApplied: form.dateApplied || null,
         interviewDate: form.interviewDate || null,
       };
-      const url = editJob ? `${API}/jobs/${editJob._id}` : `${API}/jobs`;
+      const url = editJob ? `${API}/submit/${editJob._id}` : `${API}/submit`;
       const method = editJob ? "PATCH" : "POST";
       const res = await fetch(url, {
         method,
@@ -179,7 +179,7 @@ export default function JobTracker() {
       prev.map((j) => (j._id === id ? { ...j, status: newStatus } : j)),
     );
     try {
-      await fetch(`${API}/jobs/${id}`, {
+      await fetch(`${API}/submit/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -192,7 +192,7 @@ export default function JobTracker() {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`${API}/jobs/${id}`, { method: "DELETE" });
+      await fetch(`${API}/submit/${id}`, { method: "DELETE" });
       setJobs((prev) => prev.filter((j) => j._id !== id));
     } catch (err) {
       console.error(err);
