@@ -255,7 +255,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.85rem 1rem;
+  padding: 0.85rem 0rem 1rem 2.5rem;
   text-align: left;
   border-bottom: 1px solid rgba(26, 78, 215, 0.15);
   white-space: nowrap;
@@ -279,10 +279,11 @@ body {
 }
 
 .jt-table td {
-  padding: 0.85rem 1rem;
+  padding: 0.85rem 0rem 1rem 2.5rem;
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.85rem;
   vertical-align: middle;
+  text-align: left;
 }
 
 .cell-company {
@@ -360,6 +361,7 @@ body {
   outline: none;
   opacity: 0.6;
   transition: opacity 0.15s;
+  padding: 1rem 1rem;
 }
 
 .status-select:hover {
@@ -657,7 +659,7 @@ input[type="date"].jt-input::-webkit-calendar-picker-indicator {
   color: rgba(255, 255, 255, 0.45);
   font-size: 0.85rem;
   line-height: 1.6;
-  padding: 1rem 1.5rem 0;
+  padding: 1rem 1.5rem;
 }
 
 /* ── RESPONSIVE ── */

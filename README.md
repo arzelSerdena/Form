@@ -1,6 +1,6 @@
 # Project Overview
 
-This repository contains the backend REST API developed for my web survey form. Built using Node.js and Express, it serves as the primary data processing layer bridging the deployed frontend interface and a cloud-hosted MongoDB database.
+This repository contains the backend REST API developed for a simple job application tracker. Built using Node.js and Express, it serves as the primary data processing layer bridging the deployed frontend interface and a cloud-hosted MongoDB database.
 
 ## Technology Stack
 
